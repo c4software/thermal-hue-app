@@ -1,10 +1,5 @@
-# React-minimal-example 
+# Thermal Hue App
 
-React Minimal Example. Implements :
-
-- Simple Components.
-- Minimalist react-redux.
-- Simple react-router usage.
 
 ## Install (can take a while)
 
