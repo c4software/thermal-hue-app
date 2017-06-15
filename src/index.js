@@ -1,18 +1,15 @@
+import 'roboto-npm-webfont';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { Provider } from 'react-redux';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import routes from './routes';
 
-import store from "./redux"
-import {add_to_list} from "./actions";
-
-add_to_list("Example data")
+injectTapEventPlugin();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <div>
     {routes}
-  </Provider>,
+  </div>,
   document.getElementById('root')
 );
