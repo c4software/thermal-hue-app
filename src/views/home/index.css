@@ -1,4 +1,19 @@
+.tempContainer{
+    height: 50%;
+    margin: -12px -10px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .temp{
     text-align: center;
-    font-size: 3rem;
+    font-size: 5rem;
+    margin-bottom: 0;
+}
+
+.temp svg{
+    color: white !important;
 }

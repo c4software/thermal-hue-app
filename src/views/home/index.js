@@ -2,6 +2,10 @@ import "./index.css";
 
 import React, { Component } from 'react';
 
+import ArrowDropDown from "material-ui/svg-icons/navigation/arrow-drop-down";
+import ArrowDropUp from "material-ui/svg-icons/navigation/arrow-drop-up";
+import {indigo500} from "material-ui/styles/colors";
+
 class Home extends Component {  
 
   state = {
@@ -38,11 +42,34 @@ class Home extends Component {
     }
   }
 
+  display_trend = () => {
+    let trend = "";
+    if (this.state.data.trend !== undefined){
+       switch (this.state.data.trend){
+         case "+":
+          trend = <ArrowDropUp />
+          break;
+        case "-":
+          trend = <ArrowDropDown />
+          break;
+        default:
+          trend = <ArrowDropDown style={{transform: "rotate(-90deg)"}}/>;
+       }
+    }else{
+      trend = "";
+    }
+
+     return trend;
+  }
+
+
   render() {
     return (
-      <div>
-        <h1 className="temp">{this.display_value()}</h1>
-        <h3>Todo trending</h3>
+      <div className="tempContainer" style={{backgroundColor: indigo500}}>
+        <div className="temp">
+          {this.display_value()}
+          {this.display_trend()}
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ body, html, #root {
   font-family: 'Roboto', sans-serif;
   height: 100%;
   transition: all 3s;
-  color: #ffffff;
+  background-color: #F7F7F7;
 }
 
 h1,h2,h3,h4,h5{
@@ -21,9 +21,8 @@ div[data-reactroot]{
 }
 
 .container{
-  margin: 0 10px;
-  padding-top: 66px;
-  height: calc( 100% - 68px);
+    margin: 64px 10px 0 10px;
+    height: calc( 100% - 64px);
 }
 
 .text-center{

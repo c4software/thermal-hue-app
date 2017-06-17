@@ -7,6 +7,7 @@ import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import Menu from "material-ui/svg-icons/navigation/menu";
 import MenuItem from 'material-ui/MenuItem';
+import Settings from "material-ui/svg-icons/action/settings";
 import {indigo500} from 'material-ui/styles/colors';
 
 class MyAppBar extends Component{
@@ -26,7 +27,7 @@ class MyAppBar extends Component{
       <div>
         <Drawer docked={false} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
             <div style={{height: "67px", backgroundColor: indigo500}} />
-            <MenuItem onTouchTap={() => this.go("/settings")}>Paramètres</MenuItem>
+            <MenuItem onTouchTap={() => this.go("/settings")} leftIcon={<Settings />}>Paramètres</MenuItem>
         </Drawer>
         <AppBar
             className="appBar"
