@@ -15,12 +15,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.url_data = localStorage.getItem("url_data");
+    this.state.data = JSON.parse(localStorage.getItem("data")||"{}")
   }
 
   get = () => {
     fetch(this.url_data + "?get", {mode: "cors"})
     .then(response => response.json())
-    .then(j => this.setState({data: j.data}))
+    .then(j => {
+      this.setState({data: j.data});
+      localStorage.setItem("data", JSON.stringify(j.data));
+    })
     .catch(d => console.error(d));
   }
 
