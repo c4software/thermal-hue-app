@@ -9,7 +9,8 @@ import {indigo500} from "material-ui/styles/colors";
 class Home extends Component {  
 
   state = {
-    data: {}
+    data: {},
+    isLoading: false
   }
 
   constructor(props) {
@@ -18,13 +19,15 @@ class Home extends Component {
   }
 
   get = () => {
+    this.setState({isLoading: true});
     fetch(this.url_data + "?get", {mode: "cors"})
     .then(response => response.json())
     .then(j => {
       this.setState({data: j.data});
       localStorage.setItem("data", JSON.stringify(j.data));
+      this.setState({isLoading: false});
     })
-    .catch(d => console.error(d));
+    .catch(d => this.setState({isLoading: false}));
   }
 
   componentDidMount = () => {
@@ -66,10 +69,9 @@ class Home extends Component {
      return trend;
   }
 
-
-  render() {
+  render = () => {
     return (
-      <div className="tempContainer" style={{backgroundColor: indigo500}}>
+      <div className={this.state.isLoading?"tempContainer loading":"tempContainer"} style={{backgroundColor: indigo500}}>
         <div className="temp">
           {this.display_value()}
           {this.display_trend()}
