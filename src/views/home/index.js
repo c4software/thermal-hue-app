@@ -15,7 +15,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.url_data = localStorage.getItem("url_data");
-    this.state.data = JSON.parse(localStorage.getItem("data")||"{}")
   }
 
   get = () => {
@@ -29,6 +28,8 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
+    this.setState({data: JSON.parse(localStorage.getItem("data")||"{}")});
+    
     if (this.url_data !== null && this.url_data !== undefined){
       this.get();
     }else{
@@ -39,7 +40,7 @@ class Home extends Component {
 
   display_value = () => {
     if (this.state.data.last !== undefined){
-      return this.state.data.last.value
+      return this.state.data.last.value.toFixed(1);
     }else{
       return "--"
     }
