@@ -71,7 +71,7 @@ class Home extends Component {
 
   render = () => {
     return (
-      <div className={this.state.isLoading?"tempContainer loading":"tempContainer"} style={{backgroundColor: indigo500}}>
+      <div className="tempContainer" style={{backgroundColor: indigo500}}>
         <div className="temp">
           {this.display_value()}
           {this.display_trend()}

@@ -3,6 +3,7 @@ import "./index.css";
 import React, {Component} from 'react';
 
 import AppBar from 'material-ui/AppBar';
+import ArrowBack from "material-ui/svg-icons/navigation/arrow-back";
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import Menu from "material-ui/svg-icons/navigation/menu";
@@ -11,11 +12,42 @@ import Settings from "material-ui/svg-icons/action/settings";
 import {indigo500} from 'material-ui/styles/colors';
 
 class MyAppBar extends Component{
-  state = {open: false};
+  state = {
+      open: false,
+      state: "menu"
+    };
   
-  handleToggle = () => {
-      this.setState({open: !this.state.open});
+  componentDidMount(){
+    window.addEventListener('hashchange', () => {
+        switch(location.hash){
+            case "#/":
+                this.setState({state: "menu"});
+                break;
+            case "#/settings":
+                this.setState({state: "back"});
+                break;
+            default:
+                this.setState({state: "menu"});
+        }
+    });
+    window.dispatchEvent(new CustomEvent("hashchange", {}));
+  }
+
+  handeLeftIcon = () => {
+      if (this.state.state === "menu"){
+          this.setState({open: !this.state.open});
+      }else{
+          this.go("/");
+      }
   };
+
+  leftIcon = () => {
+      if (this.state.state === "menu"){
+          return (<IconButton><Menu /></IconButton>)
+      }else{
+          return (<IconButton><ArrowBack /></IconButton>)
+      }
+  }
 
   go = (action) => {
       location.hash = action;
@@ -32,8 +64,8 @@ class MyAppBar extends Component{
         <AppBar
             className="appBar"
             title="Thermal Hue App"
-            onLeftIconButtonTouchTap={this.handleToggle}
-            iconElementLeft={<IconButton><Menu /></IconButton>}
+            onLeftIconButtonTouchTap={this.handeLeftIcon}
+            iconElementLeft={this.leftIcon()}
         />
       </div>
     )
