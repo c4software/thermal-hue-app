@@ -25,11 +25,10 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    if (this.url_data !== undefined){
+    if (this.url_data !== null && this.url_data !== undefined){
       this.get();
     }else{
-      // TODO
-      console.error("url_data not defined. Since the paramaters view is not set, you can set the localStorage key url_data to your data backend value");
+      window.location.hash = "/settings";
     }
     
   }
