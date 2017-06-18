@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import Menu from "material-ui/svg-icons/navigation/menu";
 import MenuItem from 'material-ui/MenuItem';
 import Settings from "material-ui/svg-icons/action/settings";
+import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
 
 class MyAppBar extends Component{
@@ -72,4 +73,9 @@ class MyAppBar extends Component{
   }
 }
 
-export default MyAppBar
+export default connect(function(state){
+    return {
+        data: state.data
+    }
+})(MyAppBar)
+

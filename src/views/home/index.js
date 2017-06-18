@@ -4,46 +4,14 @@ import React, { Component } from 'react';
 
 import ArrowDropDown from "material-ui/svg-icons/navigation/arrow-drop-down";
 import ArrowDropUp from "material-ui/svg-icons/navigation/arrow-drop-up";
+import {connect} from "react-redux";
 import {indigo500} from "material-ui/styles/colors";
 
 class Home extends Component {  
 
-  state = {
-    data: {},
-    isLoading: false
-  }
-
-  constructor(props) {
-    super(props);
-    this.url_data = localStorage.getItem("url_data");
-  }
-
-  get = () => {
-    this.setState({isLoading: true});
-    fetch(this.url_data + "?get", {mode: "cors"})
-    .then(response => response.json())
-    .then(j => {
-      this.setState({data: j.data});
-      localStorage.setItem("data", JSON.stringify(j.data));
-      this.setState({isLoading: false});
-    })
-    .catch(d => this.setState({isLoading: false}));
-  }
-
-  componentDidMount = () => {
-    this.setState({data: JSON.parse(localStorage.getItem("data")||"{}")});
-    
-    if (this.url_data !== null && this.url_data !== undefined){
-      this.get();
-    }else{
-      window.location.hash = "/settings";
-    }
-    
-  }
-
   display_value = () => {
-    if (this.state.data.last !== undefined){
-      return this.state.data.last.value.toFixed(1);
+    if (this.props.data.last !== undefined){
+      return this.props.data.last.value.toFixed(1);
     }else{
       return "--"
     }
@@ -51,8 +19,8 @@ class Home extends Component {
 
   display_trend = () => {
     let trend = "";
-    if (this.state.data.trend !== undefined){
-       switch (this.state.data.trend){
+    if (this.props.data.trend !== undefined){
+       switch (this.props.data.trend){
          case "+":
           trend = <ArrowDropUp />
           break;
@@ -81,4 +49,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect(function(state){
+    return {
+        data: state.data
+    }
+})(Home)
+
