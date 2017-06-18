@@ -64,7 +64,11 @@ class MyAppBar extends Component{
         </Drawer>
         <AppBar
             className="appBar"
-            title="Thermal Hue App"
+            titleStyle={{ lineHeight: 'normal' }}
+            title={<div>
+                <div style={{ marginTop: 10 }}>Thermal Hue</div>
+                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.props.data.last.date}</div>
+            </div>}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
         />
