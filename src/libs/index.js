@@ -8,7 +8,7 @@ export const get_url_data = () => {
             resolve(url_data);
         }else{
             reject("No url defined");
-        }    
+        }
     });
 };
 

@@ -57,7 +57,30 @@ class MyAppBar extends Component{
   };
 
   formatDate = () => {
-    return moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow();
+    if (this.props.data.last !== undefined){
+      return moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow();
+    }else{
+      return "No data";
+    }
+  }
+
+  renderTitle = () => {
+    if (this.props.data.last !== undefined){
+      return (<div>
+          <div style={{ marginTop: 10 }}>Thermal Hue</div>
+          <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
+      </div>)
+    }else{
+      return ("Thermal Hue")
+    }
+  }
+
+  renderTitleStyle = () => {
+    if (this.props.data.last !== undefined){
+      return {lineHeight: 'normal'};
+    }else{
+      return null;
+    }
   }
 
   render(){
@@ -69,11 +92,8 @@ class MyAppBar extends Component{
         </Drawer>
         <AppBar
             className="appBar"
-            titleStyle={{ lineHeight: 'normal' }}
-            title={<div>
-                <div style={{ marginTop: 10 }}>Thermal Hue</div>
-                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
-            </div>}
+            titleStyle={this.renderTitleStyle()}
+            title={this.renderTitle()}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
         />

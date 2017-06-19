@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 
 let DEFAULT_STAT = {
-    data: JSON.parse((localStorage.getItem("data")||{})),
+    data: JSON.parse((localStorage.getItem("data")||"{}")),
     url_data: ""
 };
 
