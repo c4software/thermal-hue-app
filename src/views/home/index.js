@@ -6,8 +6,9 @@ import ArrowDropDown from "material-ui/svg-icons/navigation/arrow-drop-down";
 import ArrowDropUp from "material-ui/svg-icons/navigation/arrow-drop-up";
 import {connect} from "react-redux";
 import {indigo500} from "material-ui/styles/colors";
+import GraphHistory from "../../components/GraphHistory";
 
-class Home extends Component {  
+class Home extends Component {
 
   display_value = () => {
     if (this.props.data.last !== undefined){
@@ -39,10 +40,15 @@ class Home extends Component {
 
   render = () => {
     return (
-      <div className="tempContainer" style={{backgroundColor: indigo500}}>
-        <div className="temp">
-          {this.display_value()}
-          {this.display_trend()}
+      <div className="dataContainer">
+        <div className="tempContainer" style={{backgroundColor: indigo500}}>
+          <div className="temp">
+            {this.display_value()}
+            {this.display_trend()}
+          </div>
+        </div>
+        <div className="graphContainer">
+          <GraphHistory />
         </div>
       </div>
     );
@@ -54,4 +60,3 @@ export default connect(function(state){
         data: state.data
     }
 })(Home)
-

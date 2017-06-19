@@ -1,6 +1,14 @@
+.dataContainer{
+  height: 100%;
+  margin: -12px -10px;
+}
+
+.graphContainer{
+  height: 50%;
+}
+
 .tempContainer{
     height: 50%;
-    margin: -12px -10px;
     color: white;
 
     display: flex;
