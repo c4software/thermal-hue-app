@@ -65,18 +65,22 @@ class MyAppBar extends Component{
   }
 
   renderTitle = () => {
-    if (this.props.data.last !== undefined){
-      return (<div>
-          <div style={{ marginTop: 10 }}>Thermal Hue</div>
-          <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
-      </div>)
+    if (this.state.state === "menu"){
+        if (this.props.data.last !== undefined){
+            return (<div>
+                <div style={{ marginTop: 10 }}>Thermal Hue</div>
+                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
+            </div>)
+        }else{
+            return "Thermal Hue";
+        }
     }else{
       return ("Thermal Hue")
     }
   }
 
   renderTitleStyle = () => {
-    if (this.props.data.last !== undefined){
+    if (this.state.state === "menu"){
       return {lineHeight: 'normal'};
     }else{
       return null;
