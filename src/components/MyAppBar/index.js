@@ -12,6 +12,22 @@ import Settings from "material-ui/svg-icons/action/settings";
 import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
 import moment from "moment";
+import {get_remote_data} from "../../libs";
+
+import IconMenu from 'material-ui/IconMenu';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+const MenuBar = (props) => (
+    <IconMenu
+        {...props}
+        iconButtonElement={
+            <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    >
+        <MenuItem primaryText="Refresh" onTouchTap={get_remote_data}/>
+    </IconMenu>
+);
 
 class MyAppBar extends Component{
   state = {
@@ -100,6 +116,7 @@ class MyAppBar extends Component{
             title={this.renderTitle()}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
+            iconElementRight={<MenuBar />}
         />
       </div>
     )

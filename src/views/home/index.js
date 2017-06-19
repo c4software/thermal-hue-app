@@ -8,8 +8,6 @@ import {connect} from "react-redux";
 import {indigo500} from "material-ui/styles/colors";
 import GraphHistory from "../../components/GraphHistory";
 
-import {get_remote_data} from "../../libs";
-
 class Home extends Component {
 
   display_value = () => {
@@ -44,7 +42,7 @@ class Home extends Component {
     return (
       <div className="dataContainer">
         <div className="tempContainer" style={{backgroundColor: indigo500}}>
-          <div className="temp" onTouchTap={get_remote_data}>
+          <div className="temp">
             {this.display_value()}
             {this.display_trend()}
           </div>

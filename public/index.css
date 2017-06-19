@@ -11,10 +11,6 @@ h1,h2,h3,h4,h5{
   font-weight: 300;
 }
 
-div[data-reactroot]{
-  height: 100%;
-}
-
 .h100{
   height: 100%;
   overflow: scroll;
