@@ -11,6 +11,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Settings from "material-ui/svg-icons/action/settings";
 import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
+import moment from "moment";
 
 class MyAppBar extends Component{
   state = {
@@ -56,7 +57,7 @@ class MyAppBar extends Component{
   };
 
   formatDate = () => {
-    return this.props.data.last.date.replace(/:/g, " ");
+    return moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow();
   }
 
   render(){
