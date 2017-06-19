@@ -36,6 +36,7 @@ class MyAppBar extends Component{
     };
 
   componentDidMount(){
+    // Monitor the hash change, display the menu or the back button.
     window.addEventListener('hashchange', () => {
         switch(location.hash){
             case "#/":
@@ -51,6 +52,7 @@ class MyAppBar extends Component{
     window.dispatchEvent(new CustomEvent("hashchange", {}));
   }
 
+  // Trigger the menu open or the go to the home if the user is in the home or not
   handeLeftIcon = () => {
       if (this.state.state === "menu"){
           this.setState({open: !this.state.open});
@@ -59,6 +61,7 @@ class MyAppBar extends Component{
       }
   };
 
+  // Display the correct iconButton depending on the user state
   leftIcon = () => {
       if (this.state.state === "menu"){
           return (<IconButton><Menu /></IconButton>)
@@ -67,11 +70,13 @@ class MyAppBar extends Component{
       }
   }
 
+  // Close the menu, and go to the requested path
   go = (action) => {
-      location.hash = action;
-      this.setState({open: false});
+    this.setState({open: false});
+    location.hash = action;
   };
 
+  // Display the date in the topbar
   formatDate = () => {
     if (this.props.data.last !== undefined){
       return moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow();
@@ -80,6 +85,9 @@ class MyAppBar extends Component{
     }
   }
 
+  // Render the title in the top bar.
+  // If user is in the home, display the last Refresh state.
+  // If other path display the app title only
   renderTitle = () => {
     if (this.state.state === "menu"){
         if (this.props.data.last !== undefined){
@@ -95,6 +103,7 @@ class MyAppBar extends Component{
     }
   }
 
+  // The style (lineHeight) is depending if the title as two lines on only one.
   renderTitleStyle = () => {
     if (this.state.state === "menu"){
       return {lineHeight: 'normal'};
