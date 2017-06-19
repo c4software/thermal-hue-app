@@ -17,7 +17,7 @@ class MyAppBar extends Component{
       open: false,
       state: "menu"
     };
-  
+
   componentDidMount(){
     window.addEventListener('hashchange', () => {
         switch(location.hash){
@@ -55,6 +55,10 @@ class MyAppBar extends Component{
       this.setState({open: false});
   };
 
+  formatDate = () => {
+    return this.props.data.last.date.replace(/:/g, " ");
+  }
+
   render(){
     return (
       <div>
@@ -67,7 +71,7 @@ class MyAppBar extends Component{
             titleStyle={{ lineHeight: 'normal' }}
             title={<div>
                 <div style={{ marginTop: 10 }}>Thermal Hue</div>
-                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.props.data.last.date}</div>
+                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
             </div>}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
@@ -82,4 +86,3 @@ export default connect(function(state){
         data: state.data
     }
 })(MyAppBar)
-
