@@ -48,7 +48,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="graphContainer">
-          <GraphHistory />
+          <GraphHistory data={this.props.data.history} />
         </div>
       </div>
     );

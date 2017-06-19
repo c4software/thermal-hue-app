@@ -4,11 +4,11 @@
 }
 
 .graphContainer{
-  height: 50%;
+  height: 60%;
 }
 
 .tempContainer{
-    height: 50%;
+    height: 40%;
     color: white;
 
     display: flex;
