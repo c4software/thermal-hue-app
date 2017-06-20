@@ -11,7 +11,7 @@ class GraphHistory extends Component{
          <CartesianGrid strokeDasharray="3 3" />
          <Tooltip />
          <YAxis width={40} tickFormatter={(v) => v.toFixed(1)} allowDecimals={false} domain={['dataMin - 1', 'dataMax + 1']} />
-         <Line dot={false} type="monotone" dataKey="value" stroke={indigo500} />
+         <Line dot={false} type="monotone" dataKey="value" strokeWidth={2} stroke={indigo500} />
         </LineChart>
       </ResponsiveContainer>
     );
