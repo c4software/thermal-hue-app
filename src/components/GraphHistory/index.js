@@ -6,7 +6,7 @@ class GraphHistory extends Component{
   render = () => {
     return (
       <ResponsiveContainer height="100%">
-      	<LineChart isAnimationActive={false} data={this.props.data} margin={{ top: 12, right: 0, left: 0, bottom: 0 }}>
+      	<LineChart isAnimationActive={false} data={this.props.data.reverse()} margin={{ top: 12, right: 0, left: 0, bottom: 0 }}>
          <XAxis hide={true} height={20} dataKey="key" />
          <CartesianGrid strokeDasharray="3 3" />
          <Tooltip />
