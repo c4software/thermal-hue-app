@@ -77,7 +77,7 @@ class MyAppBar extends Component{
   };
 
   // Display the date in the topbar
-  formatDate = () => {
+  displayDate = () => {
     try{
       return <Timeago date={this.props.data.last.date} />;
     }catch (err){
@@ -93,7 +93,7 @@ class MyAppBar extends Component{
     if (this.state.state === "menu"){
         return (<div>
             <div style={{ marginTop: 10 }}>Thermal Hue</div>
-            <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
+            <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.displayDate()}</div>
         </div>)
     }else{
       return "Thermal Hue";
