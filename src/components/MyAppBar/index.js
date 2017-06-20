@@ -91,14 +91,10 @@ class MyAppBar extends Component{
   // If other path display the app title only
   renderTitle = () => {
     if (this.state.state === "menu"){
-        if (this.props.data.last !== undefined){
-            return (<div>
-                <div style={{ marginTop: 10 }}>Thermal Hue</div>
-                <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
-            </div>)
-        }else{
-            return "Thermal Hue";
-        }
+        return (<div>
+            <div style={{ marginTop: 10 }}>Thermal Hue</div>
+            <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.formatDate()}</div>
+        </div>)
     }else{
       return "Thermal Hue";
     }
