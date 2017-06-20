@@ -11,8 +11,8 @@ import MenuItem from 'material-ui/MenuItem';
 import Settings from "material-ui/svg-icons/action/settings";
 import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
-import moment from "moment";
 import {get_remote_data} from "../../libs";
+import Timeago from "../Timeago";
 
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -78,11 +78,12 @@ class MyAppBar extends Component{
 
   // Display the date in the topbar
   formatDate = () => {
-    if (this.props.data.last !== undefined){
-      return moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow();
-    }else{
-      return "No data";
+    try{
+      return <Timeago date={this.props.data.last.date} />;
+    }catch (err){
+      return null;
     }
+
   }
 
   // Render the title in the top bar.
@@ -99,7 +100,7 @@ class MyAppBar extends Component{
             return "Thermal Hue";
         }
     }else{
-      return ("Thermal Hue")
+      return "Thermal Hue";
     }
   }
 
