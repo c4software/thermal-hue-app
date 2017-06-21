@@ -16,9 +16,13 @@ class Timeago extends Component{
   }
 
   render = () => {
-    return (
-      <span>{moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow()}</span>
-    );
+    if (this.props.data.last !== undefined){
+      return (
+        <span>{moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow()}</span>
+      );
+    }else{
+      return null;
+    }
   }
 }
 
