@@ -22,6 +22,7 @@ const MenuBar = (props) => (
         iconButtonElement={
             <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
         }
+        listStyle={{paddingTop: 0, paddingBottom: 0}}
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
     >
@@ -76,16 +77,6 @@ class MyAppBar extends Component{
     location.hash = action;
   };
 
-  // Display the date in the topbar
-  displayDate = () => {
-    try{
-      return <Timeago date={this.props.data.last.date} />;
-    }catch (err){
-      return null;
-    }
-
-  }
-
   // Render the title in the top bar.
   // If user is in the home, display the last Refresh state.
   // If other path display the app title only
@@ -93,7 +84,7 @@ class MyAppBar extends Component{
     if (this.state.state === "menu"){
         return (<div>
             <div style={{ marginTop: 10 }}>Thermal Hue</div>
-            <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{this.displayDate()}</div>
+            <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{<Timeago />}</div>
         </div>)
     }else{
       return "Thermal Hue";

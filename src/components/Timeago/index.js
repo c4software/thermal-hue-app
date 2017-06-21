@@ -1,31 +1,29 @@
 import React, {Component} from 'react';
 import moment from "moment";
+import {connect} from "react-redux";
 
 class Timeago extends Component{
   state = {timeago: "No data"};
 
   componentDidMount = () => {
-    this.timerId = setInterval(this.formatDate, 30000);
-    this.formatDate()
+    this.timerId = setInterval(() => {
+      this.setState({reload: Math.random()});
+    }, 30000);
   };
 
   componentWillUnmount = () => {
     clearTimeout(this.timerId);
   }
 
-  formatDate = () => {
-    if(this.props.date !== ""){
-        this.setState({timeago: moment(this.props.date, "YYYY-MM-DD:HH:mm:ss").fromNow()});
-    }else{
-      this.setState({timeago: ""});
-    }
-
-  };
   render = () => {
     return (
-      <span>{this.state.timeago}</span>
+      <span>{moment(this.props.data.last.date, "YYYY-MM-DD:HH:mm:ss").fromNow()}</span>
     );
   }
 }
 
-export default Timeago;
+export default connect(function(state){
+    return {
+        data: state.data
+    }
+})(Timeago)
