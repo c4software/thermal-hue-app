@@ -5,6 +5,8 @@
   "homepage": "./",
   "dependencies": {
     "amdefine": "^1.0.1",
+    "i18next": "^8.4.2",
+    "i18next-browser-languagedetector": "^2.0.0",
     "material-ui": "^0.18.3",
     "moment": "^2.18.1",
     "react": "^15.5.4",

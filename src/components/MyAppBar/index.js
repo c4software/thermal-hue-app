@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
 import {get_remote_data} from "../../libs";
 import Timeago from "../Timeago";
+import { translate } from 'react-i18next';
 
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -26,7 +27,7 @@ const MenuBar = (props) => (
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
     >
-        <MenuItem primaryText="Refresh" onTouchTap={get_remote_data}/>
+        <MenuItem primaryText={props.t("refresh")} onTouchTap={get_remote_data}/>
     </IconMenu>
 );
 
@@ -81,13 +82,14 @@ class MyAppBar extends Component{
   // If user is in the home, display the last Refresh state.
   // If other path display the app title only
   renderTitle = () => {
+    const { t } = this.props;
     if (this.state.state === "menu"){
         return (<div>
-            <div style={{ marginTop: 10 }}>Thermal Hue</div>
+            <div style={{ marginTop: 10 }}>{t('appName')}</div>
             <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{<Timeago />}</div>
         </div>)
     }else{
-      return "Thermal Hue";
+      return t('appName');
     }
   }
 
@@ -101,11 +103,12 @@ class MyAppBar extends Component{
   }
 
   render(){
+    const { t } = this.props;
     return (
       <div>
         <Drawer docked={false} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
             <div style={{height: "67px", backgroundColor: indigo500}} />
-            <MenuItem onTouchTap={() => this.go("/settings")} leftIcon={<Settings />}>Paramètres</MenuItem>
+            <MenuItem onTouchTap={() => this.go("/settings")} leftIcon={<Settings />}>{t("settings")}</MenuItem>
         </Drawer>
         <AppBar
             className="appBar"
@@ -113,15 +116,15 @@ class MyAppBar extends Component{
             title={this.renderTitle()}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
-            iconElementRight={<MenuBar />}
+            iconElementRight={<MenuBar t={t} />}
         />
       </div>
     )
   }
 }
 
-export default connect(function(state){
+export default translate(connect((state) => {
     return {
         data: state.data
     }
-})(MyAppBar)
+}))(MyAppBar)
