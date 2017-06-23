@@ -17,19 +17,6 @@ import { translate } from 'react-i18next';
 
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-const MenuBar = (props) => (
-    <IconMenu
-        {...props}
-        iconButtonElement={
-            <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
-        }
-        listStyle={{paddingTop: 0, paddingBottom: 0}}
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
-        <MenuItem primaryText={props.t("refresh")} onTouchTap={get_remote_data}/>
-    </IconMenu>
-);
 
 class MyAppBar extends Component{
   state = {
@@ -53,6 +40,23 @@ class MyAppBar extends Component{
     });
     window.dispatchEvent(new CustomEvent("hashchange", {}));
   }
+
+  // Menu
+  renderMenu = () => {
+    const {t} = this.props;
+    return (
+      <IconMenu
+          iconButtonElement={
+              <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
+          }
+          listStyle={{paddingTop: 0, paddingBottom: 0}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+          <MenuItem primaryText={t("refresh")} onTouchTap={get_remote_data}/>
+      </IconMenu>
+    )
+  };
 
   // Trigger the menu open or the go to the home if the user is in the home or not
   handeLeftIcon = () => {
@@ -116,15 +120,15 @@ class MyAppBar extends Component{
             title={this.renderTitle()}
             onLeftIconButtonTouchTap={this.handeLeftIcon}
             iconElementLeft={this.leftIcon()}
-            iconElementRight={<MenuBar t={t} />}
+            iconElementRight={this.renderMenu()}
         />
       </div>
     )
   }
 }
 
-export default translate(connect((state) => {
+export default connect((state) => {
     return {
         data: state.data
     }
-}))(MyAppBar)
+})(translate()(MyAppBar))
