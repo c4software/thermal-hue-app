@@ -3,14 +3,18 @@ export const locales = {
     translation: {
       appName: "Sonde Hue",
       settings: "Paramètres",
-      refresh: "Rafraîchir"
+      refresh: "Rafraîchir",
+      save: "Sauvegarder",
+      remoteServer: "Serveur de données"
     }
   },
   en: {
     translation: {
       appName: "Thermal Hue",
       settings: "Settings",
-      refresh: "Refresh"
+      refresh: "Refresh",
+      save: "Save",
+      remoteServer: "Remote Server"
     }
   }
 };
