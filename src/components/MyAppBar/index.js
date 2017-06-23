@@ -41,23 +41,6 @@ class MyAppBar extends Component{
     window.dispatchEvent(new CustomEvent("hashchange", {}));
   }
 
-  // Menu
-  renderMenu = () => {
-    const {t} = this.props;
-    return (
-      <IconMenu
-          iconButtonElement={
-              <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
-          }
-          listStyle={{paddingTop: 0, paddingBottom: 0}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-      >
-          <MenuItem primaryText={t("refresh")} onTouchTap={get_remote_data}/>
-      </IconMenu>
-    )
-  };
-
   // Trigger the menu open or the go to the home if the user is in the home or not
   handeLeftIcon = () => {
       if (this.state.state === "menu"){
@@ -80,6 +63,23 @@ class MyAppBar extends Component{
   go = (action) => {
     this.setState({open: false});
     location.hash = action;
+  };
+
+  // Menu
+  renderMenu = () => {
+    const {t} = this.props;
+    return (
+      <IconMenu
+          iconButtonElement={
+              <IconButton><MoreVertIcon color="#FFFFFF" /></IconButton>
+          }
+          listStyle={{paddingTop: 0, paddingBottom: 0}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+          <MenuItem primaryText={t("refresh")} onTouchTap={get_remote_data}/>
+      </IconMenu>
+    )
   };
 
   // Render the title in the top bar.
