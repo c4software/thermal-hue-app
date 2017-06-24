@@ -1,4 +1,4 @@
-import {set_data, set_url} from "../actions"
+import {set_data, set_url, ajax_in_progress} from "../actions"
 
 export const get_url_data = () => {
     return new Promise((resolve, reject) => {
@@ -13,14 +13,19 @@ export const get_url_data = () => {
 };
 
 export const get_remote_data = () => {
+    ajax_in_progress(true);
     get_url_data()
     .then(url_data => {
         fetch(url_data + "?get", {mode: "cors"})
         .then(response => response.json())
-        .then(j => set_data(j.data));
+        .then(j => {
+            ajax_in_progress(false);
+            set_data(j.data);
+        });
     })
     .catch(m => {
         location.hash = "/settings";
+        ajax_in_progress(false);
     });
 };
 
