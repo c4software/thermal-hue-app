@@ -79,7 +79,7 @@ class MyAppBar extends Component{
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-            <MenuItem primaryText={t("refresh")} onTouchTap={get_remote_data}/>
+            <MenuItem disabled={this.props.ajax_in_progress} primaryText={t("refresh")} onTouchTap={get_remote_data}/>
         </IconMenu>
       )
     }else{
@@ -134,6 +134,7 @@ class MyAppBar extends Component{
 
 export default connect((state) => {
     return {
-        data: state.data
+        data: state.data,
+        ajax_in_progress: state.ajax_in_progress
     }
 })(translate()(MyAppBar))

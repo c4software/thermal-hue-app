@@ -14,3 +14,10 @@ export const set_url = (url) => {
         url: url
     })
 };
+
+export const ajax_in_progress = (state) => {
+  store.dispatch({
+    type: "AJAX_IN_PROGRESS",
+    state: state
+  })
+}
