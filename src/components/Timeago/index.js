@@ -7,7 +7,7 @@ class Timeago extends Component{
   state = {timeago: "No data"};
 
   componentDidMount = () => {
-    moment.lang(i18n.language);
+    moment.locale(i18n.language);
     this.timerId = setInterval(() => {
       this.setState({reload: Math.random()});
     }, 30000);
