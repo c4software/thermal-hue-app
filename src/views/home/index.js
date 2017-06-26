@@ -7,18 +7,10 @@ import ArrowDropUp from "material-ui/svg-icons/navigation/arrow-drop-up";
 import {connect} from "react-redux";
 import {indigo500} from "material-ui/styles/colors";
 import GraphHistory from "../../components/GraphHistory";
-import {get_remote_data} from "../../libs";
 
-import ReactPullToRefresh from "react-pull-to-refresh";
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 class Home extends Component {
-
-  handleRefresh(resolve, reject) {
-    get_remote_data();
-    resolve();
-  }
-
 
   display_value = () => {
     if (this.props.data.last !== undefined){
@@ -60,12 +52,12 @@ class Home extends Component {
     return (
       <div className="dataContainer">
         {this.displayLoading()}
-        <ReactPullToRefresh loading={null} icon={null} onRefresh={this.handleRefresh} className="tempContainer" style={{backgroundColor: indigo500}}>
+        <div className="tempContainer" style={{backgroundColor: indigo500}}>
           <div className="temp">
             {this.display_value()}
             {this.display_trend()}
           </div>
-        </ReactPullToRefresh>
+        </div>
         <div className="graphContainer">
           <GraphHistory data={this.props.data.history} />
         </div>
