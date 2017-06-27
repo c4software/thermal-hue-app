@@ -20,6 +20,12 @@ export const get_url_data = () => {
 
 export const get_remote_data = (selectedRoom) => {
     ajax_in_progress(true);
+
+    // If selectedRoom is undefined send "" to the remote party
+    if (selectedRoom === undefined){
+        selectedRoom = "";
+    }
+
     get_url_data()
     .then(url_data => {
         fetch(url_data + "?" + queryParams({get: 1, sn: selectedRoom}), {mode: "cors"})
