@@ -1,7 +1,7 @@
 export const locales = {
   fr: {
     translation: {
-      appName: "Sonde Hue",
+      appName: "Sonde",
       settings: "Paramètres",
       refresh: "Rafraîchir",
       save: "Sauvegarder",
@@ -10,7 +10,7 @@ export const locales = {
   },
   en: {
     translation: {
-      appName: "Thermal Hue",
+      appName: "Thermal",
       settings: "Settings",
       refresh: "Refresh",
       save: "Save",
