@@ -4,7 +4,7 @@ let DEFAULT_STAT = {
     data: JSON.parse((localStorage.getItem("data")||"{}")),
     url_data: "",
     ajax_in_progress: false,
-    selectedRoom: (localStorage.getItem("selectedRoom")||undefined),
+    selectedRoom: (localStorage.getItem("selectedRoom")||""),
     roomList: JSON.parse((localStorage.getItem("rooms")||"[]"))
 };
 
