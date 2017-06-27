@@ -13,7 +13,7 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 class Home extends Component {
 
-  componentDidLoad = () => {
+  componentDidMount = () => {
     get_remote_data(this.props.selectedRoom);
   }
 
