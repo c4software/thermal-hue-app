@@ -87,14 +87,24 @@ class MyAppBar extends Component{
     }
   };
 
+  titleOrRoomName = () => {
+    const { t } = this.props;
+
+    if(this.props.selectedRoom){
+      return this.props.selectedRoom;
+    }else{
+      return t('appName');
+    }
+  }
+
   // Render the title in the top bar.
   // If user is in the home, display the last Refresh state.
   // If other path display the app title only
   renderTitle = () => {
-    const { t } = this.props;
+    const {t} = this.props;
     if (this.state.state === "menu"){
         return (<div>
-            <div style={{ marginTop: 10 }}>{t('appName')}</div>
+            <div style={{ marginTop: 10 }}>{this.titleOrRoomName()}</div>
             <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{<Timeago />}</div>
         </div>)
     }else{
@@ -135,6 +145,7 @@ class MyAppBar extends Component{
 export default connect((state) => {
     return {
         data: state.data,
-        ajax_in_progress: state.ajax_in_progress
+        ajax_in_progress: state.ajax_in_progress,
+        selectedRoom: state.selectedRoom,
     }
 })(translate()(MyAppBar))

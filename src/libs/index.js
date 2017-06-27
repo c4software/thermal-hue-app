@@ -1,5 +1,11 @@
 import {set_data, set_url, ajax_in_progress} from "../actions"
 
+export const queryParams = (params) => {
+    return Object.keys(params)
+        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+        .join('&');
+}
+
 export const get_url_data = () => {
     return new Promise((resolve, reject) => {
         let url_data = localStorage.getItem("url_data");
@@ -12,11 +18,11 @@ export const get_url_data = () => {
     });
 };
 
-export const get_remote_data = () => {
+export const get_remote_data = (selectedRoom) => {
     ajax_in_progress(true);
     get_url_data()
     .then(url_data => {
-        fetch(url_data + "?get", {mode: "cors"})
+        fetch(url_data + "?" + queryParams({get: 1, sn: selectedRoom}), {mode: "cors"})
         .then(response => response.json())
         .then(j => {
             ajax_in_progress(false);

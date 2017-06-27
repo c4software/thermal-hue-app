@@ -7,10 +7,15 @@ import ArrowDropUp from "material-ui/svg-icons/navigation/arrow-drop-up";
 import {connect} from "react-redux";
 import {indigo500} from "material-ui/styles/colors";
 import GraphHistory from "../../components/GraphHistory";
+import {get_remote_data} from "../../libs";
 
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 class Home extends Component {
+
+  componentDidLoad = () => {
+    get_remote_data(this.props.selectedRoom);
+  }
 
   display_value = () => {
     if (this.props.data.last !== undefined){
@@ -69,6 +74,7 @@ class Home extends Component {
 export default connect(function(state){
     return {
         data: state.data,
-        ajax_in_progress: state.ajax_in_progress
+        ajax_in_progress: state.ajax_in_progress,
+        selectedRoom: state.selectedRoom
     }
 })(Home)
