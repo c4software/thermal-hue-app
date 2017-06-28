@@ -9,7 +9,7 @@ import {indigo500} from "material-ui/styles/colors";
 import GraphHistory from "../../components/GraphHistory";
 import {get_remote_data} from "../../libs";
 
-import RefreshIndicator from 'material-ui/RefreshIndicator';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Home extends Component {
 
@@ -45,23 +45,22 @@ class Home extends Component {
      return trend;
   }
 
-  displayLoading = () => {
-    return (
-      <div style={{position: 'absolute', top: 80, left: 0, right: 0}}>
-        <RefreshIndicator size={50} left={-20} top={0} status={this.props.ajax_in_progress?"loading":"hide"} style={{marginLeft: '50%'}} />
-      </div>
-    )
+  tempOrLoading = () => {
+    if (this.props.ajax_in_progress){
+      return (<CircularProgress color="#ffffff" />);
+    }else{
+      return (<div className="temp">
+        {this.display_value()}
+        {this.display_trend()}
+      </div>)
+    }
   }
 
   render = () => {
     return (
       <div className="dataContainer">
-        {this.displayLoading()}
         <div className="tempContainer" style={{backgroundColor: indigo500}}>
-          <div className="temp">
-            {this.display_value()}
-            {this.display_trend()}
-          </div>
+          {this.tempOrLoading()}
         </div>
         <div className="graphContainer">
           <GraphHistory data={this.props.data.history} />
