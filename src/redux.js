@@ -5,7 +5,7 @@ let DEFAULT_STAT = {
     url_data: "",
     ajax_in_progress: false,
     selectedRoom: (localStorage.getItem("selectedRoom")||""),
-    roomList: JSON.parse((localStorage.getItem("rooms")||"[]"))
+    roomList: JSON.parse((localStorage.getItem("room")||"[]"))
 };
 
 function list(state = [], action) {
@@ -14,6 +14,11 @@ function list(state = [], action) {
         return {
             ...state,
             data: action.data
+        };
+    case 'SET_ROOM':
+        return {
+            ...state,
+            roomList: action.data
         };
     case 'SET_URL':
         return {

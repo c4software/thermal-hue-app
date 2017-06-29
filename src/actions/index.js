@@ -8,6 +8,14 @@ export const set_data = (data) => {
     });
 };
 
+export const set_room = (data) => {
+    localStorage.setItem("room", JSON.stringify(data));
+    store.dispatch({
+        type: 'SET_ROOM',
+        data: data
+    });
+};
+
 export const set_url = (url) => {
     store.dispatch({
         type: 'SET_URL',

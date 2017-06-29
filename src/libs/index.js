@@ -1,4 +1,4 @@
-import {set_data, set_url, ajax_in_progress} from "../actions"
+import {set_data, set_url, set_room, ajax_in_progress} from "../actions"
 
 export const queryParams = (params) => {
     return Object.keys(params)
@@ -17,6 +17,17 @@ export const get_url_data = () => {
         }
     });
 };
+
+export const get_remote_rooms = () => {
+  get_url_data()
+  .then(url_data => {
+      fetch(url_data + "?" + queryParams({getSheetsName: 1}), {mode: "cors"})
+      .then(response => response.json())
+      .then(j => {
+        set_room(j.data);
+      });
+  });
+}
 
 export const get_remote_data = (selectedRoom) => {
     ajax_in_progress(true);

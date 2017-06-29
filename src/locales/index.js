@@ -5,7 +5,8 @@ export const locales = {
       settings: "Paramètres",
       refresh: "Rafraîchir",
       save: "Sauvegarder",
-      remoteServer: "Serveur de données"
+      remoteServer: "Serveur de données",
+      roomList: "Pièce(s)"
     }
   },
   en: {
@@ -14,7 +15,8 @@ export const locales = {
       settings: "Settings",
       refresh: "Refresh",
       save: "Save",
-      remoteServer: "Remote Server"
+      remoteServer: "Remote Server",
+      roomList: "Room(s)"
     }
   }
 };
