@@ -26,7 +26,7 @@ export const get_remote_rooms = () => {
       .then(j => {
         set_room(j.data);
       });
-  });
+  }).catch(m => {});
 }
 
 export const get_remote_data = (selectedRoom) => {
