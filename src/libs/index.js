@@ -56,8 +56,11 @@ export const save_url_data = (url) => {
     // Save the url to the localStorage
     localStorage.setItem("url_data", document.getElementById("url_data").value);
 
-    // When remote server change, refresh the new data.
+    // When remote server url change, refresh the new data.
     get_remote_data();
+
+    // When remote server url change, refresh the room list.
+    get_remote_rooms();
 
     window.location.hash = "/";
 };
