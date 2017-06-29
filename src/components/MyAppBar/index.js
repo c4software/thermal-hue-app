@@ -21,7 +21,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 class MyAppBar extends Component{
   state = {
       open: false,
-      state: "menu"
+      state: "menu",
+      title: this.props.t('appName')
     };
 
   componentDidMount(){
@@ -29,13 +30,13 @@ class MyAppBar extends Component{
     window.addEventListener('hashchange', () => {
         switch(location.hash){
             case "#/":
-                this.setState({state: "menu"});
+                this.setState({state: "menu", title: this.props.t('appName')});
                 break;
             case "#/settings":
-                this.setState({state: "back"});
+                this.setState({state: "back", title: this.props.t('settings')});
                 break;
             default:
-                this.setState({state: "menu"});
+                this.setState({state: "menu", title: this.props.t('appName')});
         }
     });
     window.dispatchEvent(new CustomEvent("hashchange", {}));
@@ -88,12 +89,10 @@ class MyAppBar extends Component{
   };
 
   titleOrRoomName = () => {
-    const { t } = this.props;
-
     if(this.props.selectedRoom){
       return this.props.selectedRoom;
     }else{
-      return t('appName');
+      return this.state.title
     }
   }
 
@@ -101,14 +100,13 @@ class MyAppBar extends Component{
   // If user is in the home, display the last Refresh state.
   // If other path display the app title only
   renderTitle = () => {
-    const {t} = this.props;
     if (this.state.state === "menu"){
         return (<div>
             <div style={{ marginTop: 10 }}>{this.titleOrRoomName()}</div>
             <div style={{ fontSize: 'small', fontWeight: 300, paddingLeft: 0 }}>{<Timeago />}</div>
         </div>)
     }else{
-      return t('appName');
+      return this.state.title;
     }
   }
 
