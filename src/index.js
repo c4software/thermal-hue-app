@@ -10,7 +10,10 @@ import store from './redux';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 
+import {get_remote_rooms} from "./libs";
+
 injectTapEventPlugin();
+get_remote_rooms();
 
 const isCordovaApp = (typeof window.cordova !== "undefined");
 const init = () => {
