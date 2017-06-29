@@ -13,6 +13,21 @@ class Settings extends Component {
     componentDidMount = () => {
         get_remote_rooms();
     }
+
+    roomList = () => {
+        const {t} = this.props;
+        if (this.props.rooms.length > 0){
+            return (
+                <List>
+                    <Subheader>{t("roomList")}</Subheader>
+                    {this.props.rooms.map(room => <ListItem key={room} primaryText={room} />)}
+                </List>
+            );
+        }else{
+            return null;
+        }
+    }
+
     render(){
         const {t} = this.props;
         return (
@@ -22,12 +37,7 @@ class Settings extends Component {
                 <div className="text-center pad20">
                     <RaisedButton label={t("save")} onTouchTap={save_url_data} primary={true} />
                 </div>
-
-                <List>
-                    <Subheader>{t("roomList")}</Subheader>
-                    {this.props.rooms.map(room => <ListItem key={room} primaryText={room} />)}
-                </List>
-
+                {this.roomList()}
             </div>
         )
     }
