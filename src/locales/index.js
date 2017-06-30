@@ -7,7 +7,8 @@ export const locales = {
       save: "Sauvegarder",
       remoteServer: "Serveur de données",
       roomList: "Pièce(s)",
-      url: "Adresse du serveur"
+      url: "Adresse du serveur",
+      noServer: "Toucher pour difinir un serveur"
     }
   },
   en: {
@@ -18,7 +19,8 @@ export const locales = {
       save: "Save",
       remoteServer: "Remote Server",
       roomList: "Room(s)",
-      url: "Url"
+      url: "Url",
+      noServer: "Touch to set a server url"
     }
   }
 };
