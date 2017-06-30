@@ -21,9 +21,13 @@ class Settings extends Component {
     }
 
     handleClose = (o) => {
+        let goHome = this.props.url_data?false:true;
         let url = document.getElementById("url_data").value;
         save_url_data(url);
         this.setState({open: false});
+        if (goHome){
+            window.location.hash = "/";
+        }
     }
 
     roomList = () => {

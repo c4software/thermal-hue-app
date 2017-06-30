@@ -61,6 +61,4 @@ export const save_url_data = (url) => {
 
     // When remote server url change, refresh the room list.
     get_remote_rooms();
-
-    window.location.hash = "/";
 };
