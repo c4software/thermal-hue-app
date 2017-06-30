@@ -23,10 +23,15 @@ class Settings extends Component {
     handleClose = (o) => {
         let goHome = this.props.url_data?false:true;
         let url = document.getElementById("url_data").value;
+
         save_url_data(url);
-        this.setState({open: false});
+
         if (goHome){
+            // Redirect only if no url previously defined.
             window.location.hash = "/";
+        }else{
+            // Just close the modal
+            this.setState({open: false});
         }
     }
 
