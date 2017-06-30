@@ -54,7 +54,7 @@ export const get_remote_data = (selectedRoom) => {
 
 export const save_url_data = (url) => {
     // Save the url to the localStorage
-    localStorage.setItem("url_data", document.getElementById("url_data").value);
+    localStorage.setItem("url_data", url);
 
     // When remote server url change, refresh the new data.
     get_remote_data();

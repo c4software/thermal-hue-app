@@ -6,7 +6,8 @@ export const locales = {
       refresh: "Rafraîchir",
       save: "Sauvegarder",
       remoteServer: "Serveur de données",
-      roomList: "Pièce(s)"
+      roomList: "Pièce(s)",
+      url: "Adresse du serveur"
     }
   },
   en: {
@@ -16,7 +17,8 @@ export const locales = {
       refresh: "Refresh",
       save: "Save",
       remoteServer: "Remote Server",
-      roomList: "Room(s)"
+      roomList: "Room(s)",
+      url: "Url"
     }
   }
 };
