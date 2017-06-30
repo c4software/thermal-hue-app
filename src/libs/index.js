@@ -56,6 +56,9 @@ export const save_url_data = (url) => {
     // Save the url to the localStorage
     localStorage.setItem("url_data", url);
 
+    // When remote server change, remove old data.
+    set_data({});
+
     // When remote server url change, refresh the new data.
     get_remote_data();
 
