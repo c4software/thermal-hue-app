@@ -16,6 +16,21 @@ export const set_room = (data) => {
     });
 };
 
+export const add_disabled_room = (roomName) => {
+    store.dispatch({
+        type: 'DISABLE_ROOM',
+        room: roomName
+    });
+};
+
+export const remove_disabled_room = (roomName) => {
+    store.dispatch({
+        type: 'REMOVE_DISABLED_ROOM',
+        room: roomName
+    });
+};
+
+
 export const set_url = (url) => {
     store.dispatch({
         type: 'SET_URL',
