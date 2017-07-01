@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
+import Toggle from 'material-ui/Toggle';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -10,6 +11,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {connect} from "react-redux";
 import {save_url_data, get_remote_rooms} from "../../libs/";
 import { translate } from 'react-i18next';
+
 
 class Settings extends Component {
     componentDidMount = () => {
@@ -41,7 +43,7 @@ class Settings extends Component {
             return (
                 <span>
                 <Subheader>{t("roomList")}</Subheader>
-                {this.props.rooms.map(room => <ListItem key={room} primaryText={room} />)}
+                {this.props.rooms.map(room => <ListItem key={room} primaryText={room} rightToggle={<Toggle defaultToggled={true} />} />)}
                 </span>
             );
         }else{
