@@ -30,6 +30,12 @@ export const remove_disabled_room = (roomName) => {
     });
 };
 
+export const clear_disabled_rooms = () => {
+    store.dispatch({
+        type: 'CLEAR_DISABLED_ROOM'
+    });
+};
+
 
 export const set_url = (url) => {
     store.dispatch({

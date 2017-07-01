@@ -25,6 +25,14 @@ function list(state = [], action) {
             roomList: action.data
         };
     }
+    case 'CLEAR_DISABLED_ROOM':
+    {
+        localStorage.setItem("roomListDisabled", "[]");
+        return {
+            ...state,
+            roomListDisabled: []
+        };
+    }
     case 'DISABLE_ROOM':
     {
         // Duplicate, and add the room if not present

@@ -1,4 +1,4 @@
-import {set_data, set_url, set_room, ajax_in_progress} from "../actions"
+import {set_data, set_url, set_room, ajax_in_progress, clear_disabled_rooms} from "../actions"
 
 export const queryParams = (params) => {
     return Object.keys(params)
@@ -55,6 +55,9 @@ export const get_remote_data = (selectedRoom) => {
 export const save_url_data = (url) => {
     // Save the url to the localStorage
     localStorage.setItem("url_data", url);
+
+    // Clear disabled rooms
+    clear_disabled_rooms();
 
     // When remote server change, remove old data.
     set_data({});
