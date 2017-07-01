@@ -28,7 +28,10 @@ class Settings extends Component {
         let goHome = this.props.url_data?false:true;
         let url = document.getElementById("url_data").value;
 
-        save_url_data(url);
+        if (url !== this.props.url_data){
+            // save only is different.
+            save_url_data(url);
+        }
 
         if (goHome){
             // Redirect only if no url previously defined.
