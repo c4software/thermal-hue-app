@@ -23,6 +23,7 @@ class Settings extends Component {
         open: false
     }
 
+    // handleClose is called when user close the Dialog window
     handleClose = (o) => {
         let goHome = this.props.url_data?false:true;
         let url = document.getElementById("url_data").value;
@@ -40,7 +41,7 @@ class Settings extends Component {
 
     // Test if room is disable.
     isDisableRoom = (roomName) => {
-        console.log(this.props.roomListDisabled.indexOf(roomName))
+        // If room present in the disabled room list, return false to set the toggle to off
         if (this.props.roomListDisabled.indexOf(roomName) !== -1){
             return false;
         }else{
@@ -48,6 +49,7 @@ class Settings extends Component {
         }
     }
 
+    // Action when user toggle the room state
     roomToggle = (e, state) => {
         if (state){
             remove_disabled_room(e.target.id);
@@ -56,6 +58,7 @@ class Settings extends Component {
         }
     }
 
+    // Build the list of room.
     roomList = () => {
         const {t} = this.props;
         if (this.props.rooms.length > 0){
