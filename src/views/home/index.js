@@ -17,6 +17,13 @@ class Home extends Component {
     get_remote_data(this.props.selectedRoom);
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    // If room change, refresh data from remote
+    if(nextProps.selectedRoom !== this.props.selectedRoom){
+      get_remote_data(nextProps.selectedRoom);
+    }
+  }
+
   display_value = () => {
     if (this.props.data.last !== undefined){
       return this.props.data.last.value.toFixed(1);

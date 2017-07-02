@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {connect} from "react-redux";
 import { translate } from 'react-i18next';
-import {toggleRoomChooser} from "../../actions";
+import {toggleRoomChooser, set_selected_room} from "../../actions";
 import {get_visible_rooms} from "../../libs";
 
 import Dialog from 'material-ui/Dialog';
@@ -28,7 +28,7 @@ class RoomChooser extends Component{
               open={this.props.roomChooserOpen}
               autoScrollBodyContent={true}>
               <List>
-                {get_visible_rooms().map(room => <ListItem key={room} primaryText={room} />)}
+                {get_visible_rooms().map(room => <ListItem onTouchTap={() => {set_selected_room(room);toggleRoomChooser();}} key={room} primaryText={room} />)}
               </List>
             </Dialog>
         )

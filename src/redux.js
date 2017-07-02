@@ -84,6 +84,13 @@ function list(state = [], action) {
           ajax_in_progress: action.state
         };
     }
+    case "SELECTED_ROOM":
+    {
+        return {
+          ...state,
+          selectedRoom: action.roomName
+        };
+    }
     default:
     {
       return state;

@@ -36,6 +36,12 @@ export const clear_disabled_rooms = () => {
     });
 };
 
+export const set_selected_room = (roomName) => {
+    store.dispatch({
+        type: 'SELECTED_ROOM',
+        roomName: roomName
+    })
+};
 
 export const set_url = (url) => {
     store.dispatch({
