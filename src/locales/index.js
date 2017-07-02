@@ -8,7 +8,9 @@ export const locales = {
       remoteServer: "Serveur de données",
       roomList: "Pièce(s)",
       url: "Adresse du serveur",
-      noServer: "Toucher pour difinir un serveur"
+      noServer: "Toucher pour difinir un serveur",
+      close: "Fermer",
+      roomChooser: "Choisir une pièce"
     }
   },
   en: {
@@ -20,7 +22,9 @@ export const locales = {
       remoteServer: "Remote Server",
       roomList: "Room(s)",
       url: "Url",
-      noServer: "Touch to set a server url"
+      noServer: "Touch to set a server url",
+      close: "Close",
+      roomChooser: "Room chooser"
     }
   }
 };
