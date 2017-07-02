@@ -11,12 +11,15 @@ import MenuItem from 'material-ui/MenuItem';
 import Settings from "material-ui/svg-icons/action/settings";
 import {connect} from "react-redux";
 import {indigo500} from 'material-ui/styles/colors';
-import {get_remote_data} from "../../libs";
+import {get_remote_data, get_visible_rooms} from "../../libs";
+import {toggleRoomChooser} from "../../actions";
 import Timeago from "../Timeago";
 import { translate } from 'react-i18next';
 
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+import RoomChooser from "../RoomChooser";
 
 class MyAppBar extends Component{
   state = {
@@ -81,6 +84,7 @@ class MyAppBar extends Component{
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
             <MenuItem disabled={this.props.ajax_in_progress} primaryText={t("refresh")} onTouchTap={() => get_remote_data(this.props.selectedRoom)}/>
+            {get_visible_rooms().length > 1?<MenuItem primaryText={t("roomChooser")} onTouchTap={toggleRoomChooser}/>:null}
         </IconMenu>
       )
     }else{
@@ -123,6 +127,7 @@ class MyAppBar extends Component{
     const { t } = this.props;
     return (
       <div>
+        <RoomChooser open={this.props.roomChooserOpen} />
         <Drawer docked={false} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
             <div style={{height: "67px", backgroundColor: indigo500}} />
             <MenuItem onTouchTap={() => this.go("/settings")} leftIcon={<Settings />}>{t("settings")}</MenuItem>
@@ -144,6 +149,6 @@ export default connect((state) => {
     return {
         data: state.data,
         ajax_in_progress: state.ajax_in_progress,
-        selectedRoom: state.selectedRoom,
+        selectedRoom: state.selectedRoom
     }
 })(translate()(MyAppBar))
