@@ -1,10 +1,20 @@
 import {set_data, set_url, set_room, ajax_in_progress, clear_disabled_rooms} from "../actions"
+import store from "../redux"
 
 export const queryParams = (params) => {
     return Object.keys(params)
         .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
 }
+
+export const get_visible_rooms = () => {
+  const state = store.getState();
+  const roomList = state.roomList;
+  const roomListDisabled = state.roomListDisabled;
+  return roomList.filter((el) => {
+      return roomListDisabled.indexOf(el) === -1;
+  });
+};
 
 export const get_url_data = () => {
     return new Promise((resolve, reject) => {
