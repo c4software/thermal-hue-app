@@ -4,6 +4,7 @@ let DEFAULT_STAT = {
     data: JSON.parse((localStorage.getItem("data")||"{}")),
     url_data: "",
     ajax_in_progress: false,
+    roomChooserOpen: false,
     selectedRoom: (localStorage.getItem("selectedRoom")||""),
     roomList: JSON.parse((localStorage.getItem("room")||"[]")),
     roomListDisabled: JSON.parse((localStorage.getItem("roomListDisabled")||"[]")),
@@ -67,6 +68,13 @@ function list(state = [], action) {
         return {
             ...state,
             url_data: action.url
+        };
+    }
+    case 'TOGGLE_ROOM_CHOOSER':
+    {
+        return {
+            ...state,
+            roomChooserOpen: !state.roomChooserOpen
         };
     }
     case "AJAX_IN_PROGRESS":
