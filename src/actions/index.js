@@ -37,7 +37,6 @@ export const clear_disabled_rooms = () => {
 };
 
 export const set_selected_room = (roomName) => {
-    localStorage.setItem("selectedRoom", roomName);
     store.dispatch({
         type: 'SELECTED_ROOM',
         roomName: roomName

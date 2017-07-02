@@ -1,4 +1,4 @@
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 
 let DEFAULT_STAT = {
     data: JSON.parse((localStorage.getItem("data")||"{}")),
@@ -38,13 +38,22 @@ function list(state = [], action) {
     {
         // Duplicate, and add the room if not present
         let roomListDisabled = state.roomListDisabled.slice();
+        let selectedRoom = state.selectedRoom;
         if (roomListDisabled.indexOf(action.room) === -1){
           roomListDisabled.push(action.room)
+        }
+
+        // If the user hide the currently selected room
+        // reset the selected to ""
+        if (action.room === selectedRoom){
+          localStorage.setItem("selectedRoom", "");
+          selectedRoom = "";
         }
 
         localStorage.setItem("roomListDisabled", JSON.stringify(roomListDisabled));
         return {
             ...state,
+            selectedRoom: selectedRoom,
             roomListDisabled: roomListDisabled
         };
     }
@@ -86,6 +95,7 @@ function list(state = [], action) {
     }
     case "SELECTED_ROOM":
     {
+        localStorage.setItem("selectedRoom", action.roomName);
         return {
           ...state,
           selectedRoom: action.roomName
