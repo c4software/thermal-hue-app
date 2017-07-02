@@ -64,7 +64,7 @@ class Settings extends Component {
     // Build the list of room.
     roomList = () => {
         const {t} = this.props;
-        if (this.props.rooms.length > 0){
+        if (this.props.rooms.length > 1){
             return (
                 <span>
                 <Subheader>{t("roomList")}</Subheader>
