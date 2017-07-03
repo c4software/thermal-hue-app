@@ -8,6 +8,7 @@ import {get_visible_rooms} from "../../libs";
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {List, ListItem} from 'material-ui/List';
+import Check from "material-ui/svg-icons/navigation/check"
 
 class RoomChooser extends Component{
 
@@ -28,7 +29,12 @@ class RoomChooser extends Component{
               open={this.props.roomChooserOpen}
               autoScrollBodyContent={true}>
               <List>
-                {get_visible_rooms().map(room => <ListItem onTouchTap={() => {set_selected_room(room);toggleRoomChooser();}} key={room} primaryText={room} />)}
+                {get_visible_rooms().map(room => <ListItem
+                    onTouchTap={() => {set_selected_room(room);toggleRoomChooser();}}
+                    key={room}
+                    primaryText={room}
+                    rightIcon={this.props.selectedRoom === room?<Check />:null}
+                    />)}
               </List>
             </Dialog>
         )
