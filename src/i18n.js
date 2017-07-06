@@ -7,15 +7,7 @@ i18n
   .init({
     fallbackLng: 'en',
     debug: false,
-    resources: locales,
-    interpolation: {
-      escapeValue: false,
-      formatSeparator: ',',
-      format: function(value, format, lng) {
-        if (format === 'uppercase') return value.toUpperCase();
-        return value;
-      }
-    }
+    resources: locales
   });
 
 export default i18n;
