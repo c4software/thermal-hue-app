@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
+import 'moment/locale/fr';
 import moment from "moment";
 import {connect} from "react-redux";
 import i18n from "../../i18n";
 
+
 class Timeago extends Component{
   state = {timeago: "No data"};
 
-  componentDidMount = () => {
-    console.log(i18n.language);
+  componentWillMount = () => {
     moment.locale(i18n.language);
     this.timerId = setInterval(() => {
       this.setState({reload: Math.random()});
