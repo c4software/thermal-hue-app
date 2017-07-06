@@ -20,7 +20,7 @@
     "roboto-npm-webfont": "0.0.4"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5",
+    "react-scripts": "1.0.10",
     "redux-devtools": "^3.4.0"
   },
   "scripts": {

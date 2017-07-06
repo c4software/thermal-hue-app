@@ -31,7 +31,7 @@ class MyAppBar extends Component{
   componentDidMount(){
     // Monitor the hash change, display the menu or the back button.
     window.addEventListener('hashchange', () => {
-        switch(location.hash){
+        switch(window.location.hash){
             case "#/":
                 this.setState({state: "menu", title: this.props.t('appName')});
                 break;
@@ -66,7 +66,7 @@ class MyAppBar extends Component{
   // Close the menu, and go to the requested path
   go = (action) => {
     this.setState({open: false});
-    location.hash = action;
+    window.location.hash = action;
   };
 
   // Menu

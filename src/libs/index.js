@@ -57,7 +57,7 @@ export const get_remote_data = (selectedRoom) => {
         });
     })
     .catch(m => {
-        location.hash = "/settings";
+        window.location.hash = "/settings";
         ajax_in_progress(false);
     });
 };
