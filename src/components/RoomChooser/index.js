@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {connect} from "react-redux";
-import { translate } from 'react-i18next';
+import {translate} from 'react-i18next';
 import {toggleRoomChooser, set_selected_room} from "../../actions";
 import {get_visible_rooms} from "../../libs";
 
