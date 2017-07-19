@@ -52,6 +52,16 @@ class Home extends Component {
      return trend;
   }
 
+  display_average = () => {
+    if (this.props.data.average !== undefined){
+      return (
+        <span className="average">~{this.props.data.average}</span>
+      )
+    }else{
+      return null;
+    }
+  }
+
   tempOrLoading = () => {
     if (this.props.ajax_in_progress){
       return (<CircularProgress color="#ffffff" />);
@@ -59,6 +69,7 @@ class Home extends Component {
       return (<div className="temp">
         {this.display_value()}
         {this.display_trend()}
+        {this.display_average()}
       </div>)
     }
   }
