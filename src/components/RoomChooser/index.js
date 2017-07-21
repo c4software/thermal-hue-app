@@ -11,7 +11,6 @@ import {List, ListItem} from 'material-ui/List';
 import Check from "material-ui/svg-icons/navigation/check"
 
 class RoomChooser extends Component{
-
     actions =  [
       <FlatButton
         label={this.props.t("close")}
