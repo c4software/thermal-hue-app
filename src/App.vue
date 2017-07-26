@@ -1,8 +1,8 @@
 <template>
-  <v-app toolbar=true fill-height=true>
+  <v-app toolbar fill-height>
     <v-navigation-drawer></v-navigation-drawer>
-    <v-toolbar light class="primary">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
+    <v-toolbar class="primary indigo" flat>
+      <v-toolbar-side-icon dark></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">Thermal Hue App</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu bottom left style="margin-right:0">
@@ -17,7 +17,7 @@
       </v-menu>
     </v-toolbar>
     <main>
-      <v-container fluid>
+      <v-container fluid class="pad0">
         <router-view></router-view>
       </v-container>
     </main>
@@ -30,3 +30,9 @@ export default {
   name: 'app'
 }
 </script>
+
+<style>
+  .pad0{
+    padding: 0;
+  }
+</style>
