@@ -17,7 +17,7 @@
       </v-menu>
     </v-toolbar>
     <main>
-      <v-container fluid class="pad0">
+      <v-container fluid pa-0>
         <router-view></router-view>
       </v-container>
     </main>
@@ -30,9 +30,3 @@ export default {
   name: 'app'
 }
 </script>
-
-<style>
-  .pad0{
-    padding: 0;
-  }
-</style>
