@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app toolbar=true fill-height=true>
     <v-navigation-drawer></v-navigation-drawer>
-    <v-toolbar dark class="primary">
+    <v-toolbar light class="primary">
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">Thermal Hue App</v-toolbar-title>
       <v-spacer></v-spacer>
