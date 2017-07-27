@@ -4,7 +4,13 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  loading: false
+  loading: false,
+  data: JSON.parse((localStorage.getItem("data")||"{}")),
+  url_data: "",
+  roomChooserOpen: false,
+  selectedRoom: (localStorage.getItem("selectedRoom")||""),
+  roomList: JSON.parse((localStorage.getItem("room")||"[]")),
+  roomListDisabled: JSON.parse((localStorage.getItem("roomListDisabled")||"[]")),
 }
 
 const getters = {

@@ -33,7 +33,7 @@
       'isLoading'
     ]),
     methods: {
-      doRrefresh: function(event){
+      doRefresh: function(event){
         this.$store.commit('setLoading', true)
       }
     }
