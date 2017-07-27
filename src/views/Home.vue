@@ -1,7 +1,7 @@
 <template>
   <div class="dataContainer">
       <div class="tempContainer indigo">
-        <template v-if="loading">
+        <template v-if="isLoading">
            <v-progress-circular indeterminate v-bind:size="70" v-bind:width="3" class="white--text"></v-progress-circular>
         </template>
         <template v-else>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+  
   export default {
     name: 'home',
-    data: function(){
-      return {
-        loading: false
-      }
-    }
+    computed: mapGetters([
+      'isLoading'
+    ])
   }
 </script>
 
