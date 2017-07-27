@@ -1,7 +1,12 @@
 <template>
   <div class="dataContainer">
       <div class="tempContainer indigo">
-        <div class="temp">22</div>
+        <template v-if="loading">
+           <v-progress-circular indeterminate v-bind:size="70" v-bind:width="3" class="white--text"></v-progress-circular>
+        </template>
+        <template v-else>
+          <div class="temp">22</div>
+        </template>
       </div>
       <div class="graphContainer">
 
@@ -11,7 +16,12 @@
 
 <script>
   export default {
-    name: 'home'
+    name: 'home',
+    data: function(){
+      return {
+        loading: false
+      }
+    }
   }
 </script>
 
