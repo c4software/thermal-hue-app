@@ -47,6 +47,7 @@ const mutations = {
       state.selectedRoom = ""
     }
 
+    // Search for the roomName, and add it if not present.
     if (state.roomListDisabled.indexOf(roomName) === -1){
       state.roomListDisabled.push(roomName)
     }
@@ -54,6 +55,7 @@ const mutations = {
     localStorage.setItem("roomListDisabled", JSON.stringify(roomListDisabled));
   },
   removeDisableRoom (state, roomName) {
+    // Remove from the disableRoom if present.
     let indice = state.roomListDisabled.indexOf(roomName);
     if (indice !== undefined){
       state.roomListDisabled.splice(indice, 1);
