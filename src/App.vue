@@ -11,7 +11,7 @@
           </v-btn>
           <v-list>
             <v-list-tile>
-              <v-list-tile-title>Rafraîchir</v-list-tile-title>
+              <v-list-tile-title v-on:click="doRefresh">Rafraîchir</v-list-tile-title>
             </v-list-tile>
           </v-list>
       </v-menu>
@@ -26,7 +26,16 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import { mapGetters } from 'vuex'
+  export default {
+    name: 'app',
+    computed: mapGetters([
+      'isLoading'
+    ]),
+    methods: {
+      doRrefresh: function(event){
+        this.$store.commit('setLoading', true)
+      }
+    }
+  }
 </script>

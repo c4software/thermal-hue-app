@@ -12,8 +12,6 @@ Vue.use(Vuetify)
 
 import store from "./store"
 
-
-
 new Vue({
   el: '#app',
   router,
