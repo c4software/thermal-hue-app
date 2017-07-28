@@ -19,7 +19,7 @@ const getters = {
     if (state.data.last !== undefined){
       return state.data.last.value.toFixed(1)
     }else{
-      return '--'
+      return ''
     }
   },
   getTrend: state => {

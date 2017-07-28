@@ -6,7 +6,13 @@
         </template>
         <template v-else>
           <div class="temp">
-            {{getTemperature}}
+            <template v-if="getTemperature">
+              {{getTemperature}}
+            </template>
+            <template v-else>
+              <v-icon dark x-large>error</v-icon>
+              <div class="warnNoData">Récupération impossible</div>
+            </template>
             {{getTrend}}
           </div>
         </template>
@@ -43,6 +49,10 @@
     text-align: center;
     font-size: 5rem;
     margin-bottom: 0;
+  }
+
+  .warnNoData{
+    font-size: 1.2rem;
   }
 
   .tempContainer{
