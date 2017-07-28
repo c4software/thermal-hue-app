@@ -14,7 +14,19 @@ const state = {
 }
 
 const getters = {
-  isLoading: state => state.loading
+  isLoading: state => state.loading,
+  getTemperature: state => {
+    if (state.data.last !== undefined){
+      return state.data.last.value.toFixed(1)
+    }else{
+      return '--'
+    }
+  },
+  getTrend: state => {
+    if (state.data.trend !== undefined){
+        return state.data.trend;
+    }
+  }
 }
 
 const actions = {}

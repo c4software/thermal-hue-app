@@ -5,7 +5,10 @@
            <v-progress-circular indeterminate v-bind:size="70" v-bind:width="3" class="white--text"></v-progress-circular>
         </template>
         <template v-else>
-          <div class="temp">22</div>
+          <div class="temp">
+            {{getTemperature}}
+            {{getTrend}}
+          </div>
         </template>
       </div>
       <div class="graphContainer">
@@ -16,11 +19,13 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  
+
   export default {
     name: 'home',
     computed: mapGetters([
-      'isLoading'
+      'isLoading',
+      'getTemperature',
+      'getTrend'
     ])
   }
 </script>
