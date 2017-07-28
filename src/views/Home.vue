@@ -25,10 +25,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-<<<<<<< HEAD
-=======
   import graphHistory from '@/components/GraphHistory.vue'
->>>>>>> 26853741c91f832ad5c48fe815afaa0a190f4019
 
   export default {
     name: 'home',
