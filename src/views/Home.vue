@@ -16,7 +16,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  
+
   export default {
     name: 'home',
     computed: mapGetters([
@@ -25,7 +25,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .dataContainer{
     height: calc(100vh - 64px);
   }
