@@ -5,22 +5,38 @@
            <v-progress-circular indeterminate v-bind:size="70" v-bind:width="3" class="white--text"></v-progress-circular>
         </template>
         <template v-else>
-          <div class="temp">22</div>
+          <div class="temp">
+            <template v-if="getTemperature">
+              {{getTemperature}}
+            </template>
+            <template v-else>
+              <v-icon dark x-large>error</v-icon>
+              <div class="warnNoData">Récupération impossible</div>
+            </template>
+            {{getTrend}}
+          </div>
         </template>
       </div>
       <div class="graphContainer">
-
+        <graphHistory />
       </div>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+<<<<<<< HEAD
+=======
+  import graphHistory from '@/components/GraphHistory.vue'
+>>>>>>> 26853741c91f832ad5c48fe815afaa0a190f4019
 
   export default {
     name: 'home',
+    components: {graphHistory},
     computed: mapGetters([
-      'isLoading'
+      'isLoading',
+      'getTemperature',
+      'getTrend'
     ])
   }
 </script>
@@ -38,6 +54,10 @@
     text-align: center;
     font-size: 5rem;
     margin-bottom: 0;
+  }
+
+  .warnNoData{
+    font-size: 1.2rem;
   }
 
   .tempContainer{

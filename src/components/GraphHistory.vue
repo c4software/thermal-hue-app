@@ -1,10 +1,11 @@
 <template>
-
+  <div>
+    TODO
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'graphHistory',
-    props: ['last']
+    name: 'graphHistory'
   }
 </script>
