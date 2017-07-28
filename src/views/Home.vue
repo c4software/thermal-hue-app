@@ -18,16 +18,18 @@
         </template>
       </div>
       <div class="graphContainer">
-
+        <graphHistory />
       </div>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import graphHistory from '@/components/GraphHistory.vue'
 
   export default {
     name: 'home',
+    components: {graphHistory},
     computed: mapGetters([
       'isLoading',
       'getTemperature',
