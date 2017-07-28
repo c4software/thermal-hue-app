@@ -11,7 +11,7 @@
           </v-btn>
           <v-list>
             <v-list-tile>
-              <v-list-tile-title v-on:click="doRefresh">Rafraîchir</v-list-tile-title>
+              <v-list-tile-title @click="doRefresh">Rafraîchir</v-list-tile-title>
             </v-list-tile>
           </v-list>
       </v-menu>
