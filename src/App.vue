@@ -13,7 +13,6 @@
       </v-container>
     </main>
   </v-app>
-
 </template>
 
 <script>
