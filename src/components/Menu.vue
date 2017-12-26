@@ -1,8 +1,11 @@
 <template>
   <v-menu bottom left style="margin-right:0">
+      <!-- Bouton d’activation du menu -->
       <v-btn icon slot="activator" dark>
         <v-icon>more_vert</v-icon>
       </v-btn>
+      
+      <!-- Contenu de la liste déroulante -->
       <v-list>
         <v-list-tile>
           <v-list-tile-title @click="doRefresh">Rafraîchir</v-list-tile-title>
