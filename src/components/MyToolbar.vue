@@ -1,3 +1,5 @@
+<!-- Code for the main toolbar (top) -->
+
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" clipped fixed app>

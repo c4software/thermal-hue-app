@@ -1,3 +1,4 @@
+<!-- Code for the lateral Drawer -->
 <template>
   <div>
     <v-toolbar class="indigo" />
