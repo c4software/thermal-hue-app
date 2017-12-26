@@ -41,6 +41,7 @@
 <style scoped>
   .dataContainer{
     height: calc(100vh - 64px);
+    width: 100%;
   }
 
   .graphContainer{
