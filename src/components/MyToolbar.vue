@@ -10,26 +10,18 @@
       <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title @click="goHome" class="white--text">Thermal Hue App</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-menu origin="top center" transition="slide-y-transition">
-        <v-btn icon slot="activator" dark>
-          <v-icon>more_vert</v-icon>
-        </v-btn>
-        <v-list>
-          <v-list-tile @click="">
-            <v-list-tile-title>Rafraichir</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
+      <moreMenu></moreMenu>
     </v-toolbar>
   </div>
 </template>
 
 <script>
 import myContentDrawer from '@/components/Drawer'
+import moreMenu from '@/components/Menu'
 
 export default {
   name: 'myToolbar',
-  components: {myContentDrawer},
+  components: {myContentDrawer, moreMenu},
   data: function () {
     return {
       drawer: false
