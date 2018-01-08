@@ -40,7 +40,7 @@
 
 <style scoped>
   .dataContainer{
-    height: calc(100vh - 64px);
+    height: calc(100vh - 56px);
     width: 100%;
   }
 
