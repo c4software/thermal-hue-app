@@ -7,7 +7,6 @@ const state = {
   loading: false,
   data: JSON.parse((localStorage.getItem("data")||"{}")),
   url_data: (localStorage.getItem("url_data")||""),
-  roomChooserOpen: false,
   selectedRoom: (localStorage.getItem("selectedRoom")||""),
   roomList: JSON.parse((localStorage.getItem("room")||"[]")),
   roomListDisabled: JSON.parse((localStorage.getItem("roomListDisabled")||"[]")),
@@ -74,7 +73,7 @@ const mutations = {
       localStorage.setItem("roomListDisabled", JSON.stringify(state.roomListDisabled));
     }
   }
-}
+};
 
 export default new Vuex.Store({
   state,

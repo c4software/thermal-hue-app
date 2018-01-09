@@ -36,11 +36,11 @@
       'getTemperature',
       'getTrend'
     ]),
-    beforeCreate: () => {
+    beforeCreate(){
       get_remote_data();
     },
     methods: {
-      display_trend: function () {
+      display_trend() {
         if(this.getTrend === "+"){
           return "keyboard_arrow_up";
         }else if (this.getTrend === "-"){

@@ -8,9 +8,9 @@
 
     <v-toolbar class="indigo" flat clipped-left app>
       <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title @click="goHome" class="white--text">Thermal Hue App</v-toolbar-title>
+      <v-toolbar-title @click="goHome" class="white--text">{{title}}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <moreMenu></moreMenu>
+      <moreMenu v-if="hasMore"></moreMenu>
     </v-toolbar>
   </div>
 </template>
@@ -22,13 +22,35 @@ import moreMenu from '@/components/Menu'
 export default {
   name: 'myToolbar',
   components: {myContentDrawer, moreMenu},
-  data: function () {
+  data: () => {
     return {
-      drawer: false
+      drawer: false,
+      hasMore: true,
+      title: "Thermal Hue App"
     }
   },
+  mounted(){
+    window.addEventListener('hashchange', this.onPathChange);
+    this.onPathChange();
+  },
   methods: {
-    goHome () {
+    onPathChange(){
+      switch (window.location.hash) {
+        case "#/":
+          this.title = "Temperature"
+          this.hasMore = true;
+          break;
+        case "#/settings":
+          this.title = "Settings";
+          this.hasMore = false;
+          break;
+        default:
+          this.title = "Thermal Hue App";
+          this.hasMore = false;
+          break;
+      }
+    },
+    goHome(){
       window.location.hash = '/'
     }
   }
