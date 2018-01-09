@@ -8,12 +8,12 @@
           <div class="temp">
             <template v-if="getTemperature">
               {{getTemperature}}
+              <v-icon dark>{{display_trend()}}</v-icon>
             </template>
             <template v-else>
               <v-icon dark x-large>error</v-icon>
               <div class="warnNoData">Récupération impossible</div>
             </template>
-            {{getTrend}}
           </div>
         </template>
       </div>
@@ -34,7 +34,18 @@
       'isLoading',
       'getTemperature',
       'getTrend'
-    ])
+    ]),
+    methods: {
+      display_trend: function () {
+        if(this.getTrend === "+"){
+          return "keyboard_arrow_up";
+        }else if (this.getTrend === "-"){
+          return "keyboard_arrow_down";
+        }else{
+          return "keyboard_arrow_right"
+        }
+      }
+    }
   }
 </script>
 
