@@ -6,12 +6,12 @@ export const get_remote_data = () => {
   get_url_data().then(url_data => {
     fetch(url_data + "?" + queryParams({get: 1}), {mode: "cors"})
       .then(response => response.json())
-      .then(json => {
+      .then(j => {
         // Stop the loader
         store.commit("setLoading", false);
 
         // Save data in the store
-        store.commit("setData", json);
+        store.commit("setData", j.data);
       })
   }).catch(m => {
     // No url specified in the configuration
