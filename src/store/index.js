@@ -11,7 +11,7 @@ const state = {
   selectedRoom: (localStorage.getItem("selectedRoom")||""),
   roomList: JSON.parse((localStorage.getItem("room")||"[]")),
   roomListDisabled: JSON.parse((localStorage.getItem("roomListDisabled")||"[]")),
-}
+};
 
 const getters = {
   isLoading: state => state.loading,
@@ -27,9 +27,9 @@ const getters = {
         return state.data.trend;
     }
   }
-}
+};
 
-const actions = {}
+const actions = {};
 const mutations = {
   setLoading (state, boolState) {
     state.loading = boolState;
