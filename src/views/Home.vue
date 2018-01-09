@@ -26,6 +26,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import graphHistory from '@/components/GraphHistory.vue'
+  import {get_remote_data} from "../libs";
 
   export default {
     name: 'home',
@@ -35,6 +36,9 @@
       'getTemperature',
       'getTrend'
     ]),
+    beforeCreate: () => {
+      get_remote_data();
+    },
     methods: {
       display_trend: function () {
         if(this.getTrend === "+"){
