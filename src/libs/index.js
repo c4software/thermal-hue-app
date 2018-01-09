@@ -29,6 +29,11 @@ export const get_remote_rooms = () => {
         .then(j => {
           // Save the room list in the store
           store.commit("setRoomList", j.data);
+
+          // Save the first value as room name
+          if(j.data.length>0) {
+            store.commit("selectRoom", j.data[0]);
+          }
         });
   }).catch(m => {});
 };
@@ -46,8 +51,23 @@ export const get_url_data = () => {
   });
 };
 
+export const set_url_data = (url) => {
+  // Save the url to the localStorage
+  localStorage.setItem("url_data", url);
+
+  // When remote server change, remove old data.
+  store.commit("setData", {});
+
+  // When remote server url change, refresh the new data.
+  get_remote_data();
+
+  // When remote server url change, refresh the room list.
+  get_remote_rooms();
+};
+
 export const queryParams = (params) => {
   return Object.keys(params)
     .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
     .join('&');
 };
+

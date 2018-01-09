@@ -26,7 +26,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import graphHistory from '@/components/GraphHistory.vue'
-  import {get_remote_data} from "../libs";
+  import {get_remote_data, get_remote_rooms} from "../libs";
 
   export default {
     name: 'home',

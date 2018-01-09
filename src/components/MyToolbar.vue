@@ -16,43 +16,49 @@
 </template>
 
 <script>
-import myContentDrawer from '@/components/Drawer'
-import moreMenu from '@/components/Menu'
+  import { mapGetters } from 'vuex'
 
-export default {
-  name: 'myToolbar',
-  components: {myContentDrawer, moreMenu},
-  data: () => {
-    return {
-      drawer: false,
-      hasMore: true,
-      title: "Thermal Hue App"
-    }
-  },
-  mounted(){
-    window.addEventListener('hashchange', this.onPathChange);
-    this.onPathChange();
-  },
-  methods: {
-    onPathChange(){
-      switch (window.location.hash) {
-        case "#/":
-          this.title = "Temperature"
-          this.hasMore = true;
-          break;
-        case "#/settings":
-          this.title = "Settings";
-          this.hasMore = false;
-          break;
-        default:
-          this.title = "Thermal Hue App";
-          this.hasMore = false;
-          break;
+  import myContentDrawer from '@/components/Drawer'
+  import moreMenu from '@/components/Menu'
+
+  export default {
+    name: 'myToolbar',
+    components: {myContentDrawer, moreMenu},
+    computed: mapGetters([
+      'getSelectedRoom',
+      'getLastUpdateDate'
+    ]),
+    data: () => {
+      return {
+        drawer: false,
+        hasMore: true,
+        title: "Thermal Hue App"
       }
     },
-    goHome(){
-      window.location.hash = '/'
+    mounted(){
+      window.addEventListener('hashchange', this.onPathChange);
+      this.onPathChange();
+    },
+    methods: {
+      onPathChange(){
+        switch (window.location.hash) {
+          case "#/":
+            this.title = this.getSelectedRoom;
+            this.hasMore = true;
+            break;
+          case "#/settings":
+            this.title = "Settings";
+            this.hasMore = false;
+            break;
+          default:
+            this.title = "Thermal Hue App";
+            this.hasMore = false;
+            break;
+        }
+      },
+      goHome(){
+        window.location.hash = '/'
+      }
     }
   }
-}
 </script>
