@@ -8,7 +8,11 @@
 
     <v-toolbar class="indigo" flat clipped-left app>
       <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title @click="goHome" class="white--text">{{title}}</v-toolbar-title>
+      <v-toolbar-title @click="goHome" class="white--text" style="line-height: initial">
+        {{title}}
+        <br>
+        <small><timeago :since="getLastUpdateDate" :auto-update="60" locale="fr-FR"></timeago></small>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <moreMenu v-if="hasMore"></moreMenu>
     </v-toolbar>
@@ -20,6 +24,7 @@
 
   import myContentDrawer from '@/components/Drawer'
   import moreMenu from '@/components/Menu'
+
 
   // TODO Show the getLastUpdateDate (timeago) in a second line on the toolbar"
 
@@ -64,3 +69,10 @@
     }
   }
 </script>
+
+<style scoped>
+  small{
+    display: block;
+    font-weight: 300;
+  }
+</style>
