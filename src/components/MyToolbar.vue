@@ -25,9 +25,6 @@
   import myContentDrawer from '@/components/Drawer'
   import moreMenu from '@/components/Menu'
 
-
-  // TODO Show the getLastUpdateDate (timeago) in a second line on the toolbar"
-
   export default {
     name: 'myToolbar',
     components: {myContentDrawer, moreMenu},
