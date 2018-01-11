@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
   loading: false,
@@ -15,8 +15,14 @@ const state = {
 const getters = {
   isLoading: state => state.loading,
   getSelectedRoom: state => state.selectedRoom,
-  getLastUpdateDate: state => state.data?state.data.last.date:"",
-  geturlData: state => state.url_data,
+  getLastUpdateDate: state => {
+    if(state.data && state.data.last !== undefined){
+      // If we have a date
+      return state.data.last.date;
+    }else{
+      return undefined;
+    }
+  },
   getTemperature: state => {
     if (state.data.last !== undefined){
       return state.data.last.value.toFixed(1)
@@ -43,9 +49,6 @@ const mutations = {
   setUrl (state, url) {
     localStorage.setItem("url_data", url);
     state.url_data = url;
-  },
-  toggleRoomChooser (state) {
-    state.roomChooserOpen = !state.roomChooserOpen;
   },
   selectRoom (state, roomName) {
     localStorage.setItem("selectedRoom", roomName);

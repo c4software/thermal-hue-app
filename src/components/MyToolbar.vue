@@ -10,8 +10,10 @@
       <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title @click="goHome" class="white--text" style="line-height: initial">
         {{title}}
-        <br>
-        <small><timeago :since="getLastUpdateDate" :auto-update="60" locale="fr-FR"></timeago></small>
+        <span v-if="getLastUpdateDate && hasMore">
+          <br>
+          <small><timeago :since="getLastUpdateDate" :auto-update="60" locale="fr-FR"></timeago></small>
+        </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <moreMenu v-if="hasMore"></moreMenu>

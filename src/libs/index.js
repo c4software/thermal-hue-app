@@ -53,7 +53,7 @@ export const get_url_data = () => {
 
 export const set_url_data = (url) => {
   // Save the url to the localStorage
-  localStorage.setItem("url_data", url);
+  store.commit("setUrl", url);
 
   // When remote server change, remove old data.
   store.commit("setData", {});
