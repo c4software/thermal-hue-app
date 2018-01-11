@@ -16,6 +16,7 @@ const getters = {
   isLoading: state => state.loading,
   getSelectedRoom: state => state.selectedRoom,
   getLastUpdateDate: state => state.data?state.data.last.date:"",
+  geturlData: state => state.url_data,
   getTemperature: state => {
     if (state.data.last !== undefined){
       return state.data.last.value.toFixed(1)
