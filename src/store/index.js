@@ -34,6 +34,13 @@ const getters = {
     if (state.data.trend !== undefined){
         return state.data.trend;
     }
+  },
+  getHistory: state => {
+    if (state.data.history !== undefined){
+      return state.data.history;
+    }else{
+      return []
+    }
   }
 };
 

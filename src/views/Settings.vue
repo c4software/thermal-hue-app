@@ -50,3 +50,9 @@
     }
   }
 </script>
+
+<style scoped>
+  ul.list{
+    background: transparent !important;
+  }
+</style>

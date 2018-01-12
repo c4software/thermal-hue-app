@@ -26,15 +26,17 @@
 <script>
   import { mapGetters } from 'vuex'
   import graphHistory from '@/components/GraphHistory.vue'
-  import {get_remote_data, get_remote_rooms} from "../libs";
+  import {get_remote_data} from "../libs";
 
   export default {
     name: 'home',
-    components: {graphHistory},
+    components: {
+      graphHistory
+    },
     computed: mapGetters([
       'isLoading',
       'getTemperature',
-      'getTrend'
+      'getTrend',
     ]),
     beforeCreate(){
       get_remote_data();
@@ -55,12 +57,14 @@
 
 <style scoped>
   .dataContainer{
-    height: calc(100vh - 56px);
+    height: calc(100vh - 57px);
     width: 100%;
   }
 
   .graphContainer{
     height: 60%;
+    display: flex;
+    align-items: center;
   }
 
   .temp{
