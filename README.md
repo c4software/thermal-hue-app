@@ -1,5 +1,3 @@
 # Thermal Hue App
 
-Simple thermometer ReactJS App to display information from my Hue thermal sensor.
-
-![Linux configuration](screenshot.png)
+Simple thermometer VueJS app to display information from my Hue thermal sensor.

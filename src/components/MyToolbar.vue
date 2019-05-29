@@ -1,0 +1,77 @@
+<!-- Code for the main toolbar (top) -->
+
+<template>
+  <div>
+    <v-navigation-drawer v-model="drawer" clipped fixed app>
+      <myContentDrawer />
+    </v-navigation-drawer>
+
+    <v-toolbar class="indigo" flat clipped-left app>
+      <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title @click="goHome" class="white--text" style="line-height: initial">
+        {{title}}
+        <span v-if="getLastUpdateDate && hasMore">
+          <br>
+          <small><timeago :since="getLastUpdateDate" :auto-update="60" locale="fr-FR"></timeago></small>
+        </span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <moreMenu v-if="hasMore"></moreMenu>
+    </v-toolbar>
+  </div>
+</template>
+
+<script>
+  import { mapGetters } from 'vuex'
+
+  import myContentDrawer from '@/components/Drawer'
+  import moreMenu from '@/components/Menu'
+
+  export default {
+    name: 'myToolbar',
+    components: {myContentDrawer, moreMenu},
+    computed: mapGetters([
+      'getSelectedRoom',
+      'getLastUpdateDate'
+    ]),
+    data: () => {
+      return {
+        drawer: false,
+        hasMore: true,
+        title: "Thermal Hue App"
+      }
+    },
+    mounted(){
+      window.addEventListener('hashchange', this.onPathChange);
+      this.onPathChange();
+    },
+    methods: {
+      onPathChange(){
+        switch (window.location.hash) {
+          case "#/":
+            this.title = this.getSelectedRoom;
+            this.hasMore = true;
+            break;
+          case "#/settings":
+            this.title = "Settings";
+            this.hasMore = false;
+            break;
+          default:
+            this.title = "Thermal Hue App";
+            this.hasMore = false;
+            break;
+        }
+      },
+      goHome(){
+        window.location.hash = '/'
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  small{
+    display: block;
+    font-weight: 300;
+  }
+</style>
